@@ -1,7 +1,6 @@
 package com.example.servlets;
 
-import com.example.accounts.AccountService;
-import com.example.accounts.UserProfile;
+import com.example.accounts.UserProfileDataSet;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -10,12 +9,9 @@ import java.io.*;
 import java.nio.file.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.*;
 
 @WebServlet("/files")
 public class FilesServlet extends HttpServlet {
-
-    private final String STORAGE_PATH = "D:\\user";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -23,9 +19,10 @@ public class FilesServlet extends HttpServlet {
 
         HttpSession session = req.getSession(false);
 
-        UserProfile userProfile = (UserProfile) session.getAttribute("userProfile");
-        String username = userProfile.getUsername();
+        UserProfileDataSet userProfileDataSet = (UserProfileDataSet) session.getAttribute("userProfile");
+        String username = userProfileDataSet.getUsername();
 
+        String STORAGE_PATH = "D:\\user";
         Path userHome = Paths.get(STORAGE_PATH, username).toAbsolutePath().normalize();
 
         if (!Files.exists(userHome)) {

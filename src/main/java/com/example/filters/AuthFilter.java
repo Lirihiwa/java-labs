@@ -1,7 +1,5 @@
-package com.example.newsolution;
+package com.example.filters;
 
-import com.example.accounts.AccountService;
-import com.example.accounts.UserProfile;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.*;

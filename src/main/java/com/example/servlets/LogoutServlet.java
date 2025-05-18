@@ -1,8 +1,7 @@
-package com.example.newsolution;
+package com.example.servlets;
 
 import java.io.IOException;
 
-import com.example.accounts.UserProfile;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -12,7 +11,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
 
         HttpSession session = req.getSession(false);
 

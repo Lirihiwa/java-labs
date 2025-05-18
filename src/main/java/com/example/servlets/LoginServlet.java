@@ -1,7 +1,7 @@
-package com.example.newsolution;
+package com.example.servlets;
 
 import com.example.accounts.AccountService;
-import com.example.accounts.UserProfile;
+import com.example.accounts.UserProfileDataSet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -36,11 +36,11 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        UserProfile user = accountService.loginUser(username, password);
+        UserProfileDataSet userProfileDataSet = accountService.loginUser(username, password);
 
-        if (user != null) {
+        if (userProfileDataSet != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("userProfile", user);
+            session.setAttribute("userProfile", userProfileDataSet);
             resp.sendRedirect(req.getContextPath() + "/files");
         } else {
             req.getRequestDispatcher("login.jsp").forward(req, resp);

@@ -1,7 +1,6 @@
-package com.example.newsolution;
+package com.example.servlets;
 
 import com.example.accounts.AccountService;
-import com.example.accounts.UserProfile;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
